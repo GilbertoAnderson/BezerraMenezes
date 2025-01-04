@@ -1,0 +1,109 @@
+﻿@model BezerraMenezesExpress.Models.tblCarrinhoEntrada
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Livros</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Lista Entrada</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.idCarrinhoEntrada)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NotaFiscal, "Nota Fiscal * ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NotaFiscal, new { htmlAttributes = new { @class = "form-control" , @readOnly = true} })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fornecedor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fornecedor, new { htmlAttributes = new { @class = "form-control", @readOnly = true } })
+                @Html.ValidationMessageFor(model => model.Fornecedor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dtMovimento, "Data de Entrada *",  htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dtMovimento, new { htmlAttributes = new { @class = "form-control", @readOnly = true } })
+                @Html.ValidationMessageFor(model => model.dtMovimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ISBN, "ISBN", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ISBN, new { htmlAttributes = new { @class = "form-control", @readOnly = true } })
+                @Html.ValidationMessageFor(model => model.ISBN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                &nbsp;
+            </div>
+            <div class="col-md-10">
+                <label id="lbl_NomeLivro">@ViewBag.NomeLivro</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantidade, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantidade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.Hidden("idTipoEstoque", 1)
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" /> &nbsp;
+             </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">  &nbsp;   </div>
+            <div class="col-md-8" id="gridLista" style="border:dashed; padding:10px 10px 10px 10px; border-color:dodgerblue">
+                @if (Model != null)
+                {
+                    @Html.Partial("_LivrosMesmaNotaFiscal")
+                }
+                <a href="@Url.Action("EntradaCreate", new { id = Model.idCarrinhoEntrada})"> <input type="button" value="Incluir novo livro nesta lista" class="btn btn-default" /></a>
+
+            </div>
+            <div class="col-md-2">   &nbsp;    </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-6">  &nbsp;   </div>
+            <div class="col-md-offset-2 col-md-4" style="">
+                <a href="@Url.Action("EntradaSalvar", new { id = Model.idCarrinhoEntrada})"> <input type="button" value="Registrar esta lista de livros no estoque" class="btn btn-default" /></a>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Abandonar Alteração", "EntradaIndex")
+</div>

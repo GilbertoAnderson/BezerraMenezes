@@ -1,0 +1,96 @@
+﻿
+
+@model BezerraMenezesExpress.Models.tblParcela
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<h2>Comprovante de Contribução</h2>
+
+<div>
+    <h4>Parcela @Html.DisplayFor(model => model.Mes) de @Html.DisplayFor(model => model.Ano) </h4>
+    <hr />
+    
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                Matricula
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.tblAssociado.Matricula)
+            </dd>
+
+            <dt>
+                Nome Contribuinte
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.tblAssociado.Nome)
+            </dd>
+
+
+            <dt>
+                Data de Pagamento
+            </dt>
+
+            <dd>               
+                @Html.ValueFor(model => model.Pagamento, "{0:dd/MM/yyyy}")
+            </dd>
+
+
+            <dt>
+                Tipo
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tblSubconta.Descricao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Valor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Valor)
+            </dd>
+
+
+            <dt>
+                Forma de Pagamento
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tblFormaPagamento.Descricao)
+            </dd>
+
+
+            <dt>
+            </dt>
+
+            <dd><br />   <br />   <br />               
+            </dd>
+
+            <dt>
+                
+            </dt>
+
+
+        </dl>
+    </div>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.idParcela)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Contribuições Anteriores", "AssociadoParcelas", new { id = Model.idAssociado, controller = "Parcelas" })&nbsp;|&nbsp;
+            @Html.ActionLink("Imprimir", "ParcelaPdf", new { id = Model.idParcela }, new  { target= "_blank"})
+            <br />
+        </div>
+    </div>
+}
+    <p>
+
+    </p>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BezerraMenezesExpress.Models.tblLivros>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Livros</h2>
+<p>
+    <a href="@Url.Action("Create")"> <input type="button" value="Novo" class="btn btn-default" /></a>
+</p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Editora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tblCategorias.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Editora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblCategorias.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a href="  @Url.Action("Details", new { id = item.ISBN }) " title='Consultar'> <i class='glyphicon glyphicon-search'> </i></a>&nbsp;
+                <a href="  @Url.Action("Edit", new { id = item.ISBN })    " title='Editar'> <i class='glyphicon glyphicon-pencil'> </i></a>&nbsp;
+                <a href="  @Url.Action("Delete", new { id = item.ISBN })  " title='Excluir'> <i class='glyphicon glyphicon-trash'>  </i></a>
+            </td>
+        </tr>
+    }
+    
+    </table>

@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelBezerraMenezesStoreContainer" CdmEntityContainer="db_BezerraMenezesEntities">
+    <EntitySetMapping Name="tblAssociado">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblAssociado">
+        <MappingFragment StoreEntitySet="tblAssociado">
+          <ScalarProperty Name="idAssociado" ColumnName="idAssociado" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Nascimento" ColumnName="Nascimento" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+          <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="dtCadastro" ColumnName="dtCadastro" />
+          <ScalarProperty Name="dtMigracao" ColumnName="dtMigracao" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCarrinhoEntrada">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblCarrinhoEntrada">
+        <MappingFragment StoreEntitySet="tblCarrinhoEntrada">
+          <ScalarProperty Name="idCarrinhoEntrada" ColumnName="idCarrinhoEntrada" />
+          <ScalarProperty Name="idTipoEstoque" ColumnName="idTipoEstoque" />
+          <ScalarProperty Name="NotaFiscal" ColumnName="NotaFiscal" />
+          <ScalarProperty Name="Fornecedor" ColumnName="Fornecedor" />
+          <ScalarProperty Name="dtMovimento" ColumnName="dtMovimento" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCategorias">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblCategorias">
+        <MappingFragment StoreEntitySet="tblCategorias">
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblConta">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblConta">
+        <MappingFragment StoreEntitySet="tblConta">
+          <ScalarProperty Name="idConta" ColumnName="idConta" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEstoque">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblEstoque">
+        <MappingFragment StoreEntitySet="tblEstoque">
+          <ScalarProperty Name="idEstoque" ColumnName="idEstoque" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="NotaFiscal" ColumnName="NotaFiscal" />
+          <ScalarProperty Name="dtMovimento" ColumnName="dtMovimento" />
+          <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+          <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblExtrato">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblExtrato">
+        <MappingFragment StoreEntitySet="tblExtrato">
+          <ScalarProperty Name="idExtrato" ColumnName="idExtrato" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Subconta" ColumnName="Subconta" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+          <ScalarProperty Name="Conta" ColumnName="Conta" />
+          <ScalarProperty Name="DtInicio" ColumnName="DtInicio" />
+          <ScalarProperty Name="DtFim" ColumnName="DtFim" />
+          <ScalarProperty Name="Filtro" ColumnName="Filtro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFluxo">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblFluxo">
+        <MappingFragment StoreEntitySet="tblFluxo">
+          <ScalarProperty Name="idFluxo" ColumnName="idFluxo" />
+          <ScalarProperty Name="Subconta" ColumnName="Subconta" />
+          <ScalarProperty Name="col01" ColumnName="col01" />
+          <ScalarProperty Name="col02" ColumnName="col02" />
+          <ScalarProperty Name="col03" ColumnName="col03" />
+          <ScalarProperty Name="col04" ColumnName="col04" />
+          <ScalarProperty Name="col05" ColumnName="col05" />
+          <ScalarProperty Name="col06" ColumnName="col06" />
+          <ScalarProperty Name="col07" ColumnName="col07" />
+          <ScalarProperty Name="col08" ColumnName="col08" />
+          <ScalarProperty Name="col09" ColumnName="col09" />
+          <ScalarProperty Name="col10" ColumnName="col10" />
+          <ScalarProperty Name="col11" ColumnName="col11" />
+          <ScalarProperty Name="col12" ColumnName="col12" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFluxoColunas">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblFluxoColunas">
+        <MappingFragment StoreEntitySet="tblFluxoColunas">
+          <ScalarProperty Name="idFluxoColuna" ColumnName="idFluxoColuna" />
+          <ScalarProperty Name="col01" ColumnName="col01" />
+          <ScalarProperty Name="col02" ColumnName="col02" />
+          <ScalarProperty Name="col03" ColumnName="col03" />
+          <ScalarProperty Name="col04" ColumnName="col04" />
+          <ScalarProperty Name="col05" ColumnName="col05" />
+          <ScalarProperty Name="col06" ColumnName="col06" />
+          <ScalarProperty Name="col07" ColumnName="col07" />
+          <ScalarProperty Name="col08" ColumnName="col08" />
+          <ScalarProperty Name="col09" ColumnName="col09" />
+          <ScalarProperty Name="col10" ColumnName="col10" />
+          <ScalarProperty Name="col11" ColumnName="col11" />
+          <ScalarProperty Name="col12" ColumnName="col12" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFormaPagamento">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblFormaPagamento">
+        <MappingFragment StoreEntitySet="tblFormaPagamento">
+          <ScalarProperty Name="idFormaPagamento" ColumnName="idFormaPagamento" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLancamento">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblLancamento">
+        <MappingFragment StoreEntitySet="tblLancamento">
+          <ScalarProperty Name="idLancamento" ColumnName="idLancamento" />
+          <ScalarProperty Name="idConta" ColumnName="idConta" />
+          <ScalarProperty Name="idSubconta" ColumnName="idSubconta" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Pagamento" ColumnName="Pagamento" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Previsto" ColumnName="Previsto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLivros">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblLivros">
+        <MappingFragment StoreEntitySet="tblLivros">
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Autor" ColumnName="Autor" />
+          <ScalarProperty Name="AutorEspiritual" ColumnName="AutorEspiritual" />
+          <ScalarProperty Name="Editora" ColumnName="Editora" />
+          <ScalarProperty Name="Edicao" ColumnName="Edicao" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="AnoPublicacao" ColumnName="AnoPublicacao" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Capa" ColumnName="Capa" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblParcela">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblParcela">
+        <MappingFragment StoreEntitySet="tblParcela">
+          <ScalarProperty Name="idParcela" ColumnName="idParcela" />
+          <ScalarProperty Name="idAssociado" ColumnName="idAssociado" />
+          <ScalarProperty Name="idformaPagamento" ColumnName="idformaPagamento" />
+          <ScalarProperty Name="idSubconta" ColumnName="idSubconta" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Pagamento" ColumnName="Pagamento" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPerfil">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblPerfil">
+        <MappingFragment StoreEntitySet="tblPerfil">
+          <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSubconta">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblSubconta">
+        <MappingFragment StoreEntitySet="tblSubconta">
+          <ScalarProperty Name="idSubconta" ColumnName="idSubconta" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTipoEstoque">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblTipoEstoque">
+        <MappingFragment StoreEntitySet="tblTipoEstoque">
+          <ScalarProperty Name="idTipoEstoque" ColumnName="idTipoEstoque" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsuario">
+      <EntityTypeMapping TypeName="ModelBezerraMenezes.tblUsuario">
+        <MappingFragment StoreEntitySet="tblUsuario">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+          <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Nascimento" ColumnName="Nascimento" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_fin_rep_extrato" FunctionName="ModelBezerraMenezes.Store.sp_fin_rep_extrato" />
+    <FunctionImportMapping FunctionImportName="sp_fin_rep_fluxo" FunctionName="ModelBezerraMenezes.Store.sp_fin_rep_fluxo" />
+  </EntityContainerMapping>
+</Mapping>

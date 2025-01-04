@@ -1,0 +1,97 @@
+﻿@model BezerraMenezesExpress.Models.tblUsuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Excluir</h2>
+
+
+    <h3>Confirme a exclusão deste registro?</h3>
+    <div>
+        <h4>Usuario</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Código
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CodUsuario)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Senha)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Senha)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Telefone)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Celular)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Celular)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Nascimento)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nascimento)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Ativo)
+            </dd>
+    
+            <dt>
+               Perfil
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tblPerfil.Descricao)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Excluir" class="btn btn-default" /> |
+                <a href="  @Url.Action("Index") " title='Retornar a lista'> <i class='glyphicon glyphicon-th-list'> Retornar a lista</i></a>
+            </div>
+        }
+    </div>

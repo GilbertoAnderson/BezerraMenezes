@@ -1,0 +1,87 @@
+﻿@model BezerraMenezesExpress.Models.Relatorios
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Relatóriosssssssssssssssss</h2>
+
+
+<table class="table">
+    <tr>
+        <th>            
+            @Html.DisplayNameFor(model => model.DtInicio)
+        </th>
+        <th>                        
+           @Html.TextBoxFor(model => model.DtInicio, null, new { @class = "form-control  date-picker" })
+        </th>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DtFim)
+        </th>
+        <th>
+            @Html.TextBoxFor(model => model.DtFim, null, new { @class = "form-control  date-picker" })
+        </th>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Conta)
+        </th>
+        <th>
+            @Html.DropDownList("Conta", ViewBag.Contas as SelectList)
+        </th>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Filtro)
+        </th>
+        <th>
+            @Html.TextBoxFor(model => model.Filtro)
+        </th>
+    </tr>
+
+        <tr>
+            <th>
+            </th>
+            <th>
+                @Html.ActionLink("Extrato", "Extrato") |
+                @Html.ActionLink("Fluxo", "Fluxo") |
+                @Html.ActionLink("Gerencial", "Gerencial")
+             </th>
+        </tr>
+
+</table>
+
+<link href="~/content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+@section Scripts {
+
+    <script type="text/javascript" src="../../scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker-globalize.js"></script>
+    <script src="~/Scripts/locales/bootstrap-datepicker.pt-BR.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        alert("santo Deus");
+        $('.date-picker').datepicker({
+            dateFormat: 'dd/mm/yy',
+            mandatory: true,
+            changeYear: false,
+            changeMonth: false,
+            highlightWeek: true
+
+        });
+
+    });
+
+
+    </script>
+}

@@ -1,0 +1,357 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.gridTable {
+    margin: 5px;
+    padding: 12px;
+    border: 1px #c8c8c8 solid;
+    border-collapse: collapse;
+    min-width: 95%;
+    background-color: #fff;
+    color: #fff;
+}
+
+
+    .gridTable tr.gridAltRow {
+        padding: 12px;
+        text-decoration: none;
+        background-color: #efeeef;
+        color: #333;
+    }
+
+
+    .gridTable tr:hover {
+        text-decoration: none;
+        padding: 12px;
+        background-color: #5F9EA0;
+        color: #333;
+    }
+
+.gridAltRow td, .gridAltRow td:link, .gridAltRow td:visited, .gridAltRow td:active, .gridAltRow td:hover {
+    text-decoration: none;
+    padding: 12px;
+    color: #333;
+}
+
+.gridRow td, .gridRow td:link, .gridRow td:visited, .gridRow td:active, .gridRow td:hover {
+    text-decoration: none;
+    padding: 12px;
+    color: #333;
+}
+
+.gridAltRow a, .gridAltRow a:link, .gridAltRow a:visited, .gridAltRow a:active, .gridAltRow a:hover {
+    text-decoration: none;
+    padding: 12px;
+    color: #333;
+}
+
+.gridRow a:link, .gridRow a:visited, .gridRow a:active, .gridRow a:hover {
+    text-decoration: none;
+    padding: 12px;
+    color: #333;
+}
+
+
+.gridHead th {
+    font-weight: bold;
+    background-color: #030D8D;
+    color: #fff;
+    padding: 12px
+}
+
+.gridHead a:link, .gridHead a:visited, .gridHead a:active, .gridHead a:hover {
+    text-decoration: none;
+    padding: 12px;
+    color: #fff;
+}
+
+.gridHead a:hover {
+    padding: 12px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.gridFooter td {
+    padding: 12px;
+    background-color: #c7d1d6;
+    color: #999;
+    font-size: 12pt;
+    text-align: center;
+}
+
+.gridFooter a {
+    font-weight: bold;
+    color: #333;
+    border: 1px #333 solid;
+}
+
+.gridLarge {
+    width: 20%;
+    text-align: center;
+}
+
+
+
+.gridPedidoTable {
+    margin: 2px;
+    padding: 4px;
+    border: 1px #c8c8c8 solid;
+    border-collapse: collapse;
+    background-color: #fff;
+    color: #fff;
+    min-width: 98%;
+    font-size: 10pt;
+}
+
+.gridPedidoHead th {
+    font-weight: bold;
+    background-color: #808080;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    font-size: 10pt;
+}
+
+.gridPedidoHead a:link, .gridPedidoHead a:visited, .gridPedidoHead a:active, .gridPedidoHead a:hover {
+    color: #fff;
+}
+
+.gridPedidoHead a:hover {
+    text-decoration: none;
+}
+
+.gridPedidoTable tr.gridPedidoAltRow {
+    background-color: #efeeef;
+    color: #333;
+}
+
+.gridPedidoTable tr:hover {
+    background-color: #5F9EA0;
+    text-decoration: none;
+    color: #333;
+}
+
+.gridPedidoTable tr:link {
+    background-color: #5F9EA0;
+    text-decoration: none;
+    color: #333;
+}
+
+
+.gridPedidoAltRow td, .gridPedidoAltRow td:link, .gridPedidoAltRow td:visited, .gridPedidoAltRow td:active, .gridPedidoAltRow td:hover {
+    background-color: #efeeef;
+    text-decoration: none;
+    padding: 5px;
+    color: #333;
+}
+
+.gridPedidoRow td, .gridPedidoRow td:link, .gridPedidoRow td:visited, .gridPedidoRow td:active, .gridPedidoRow td:hover {
+    text-decoration: none;
+    padding: 5px;
+    color: #333;
+}
+
+.gridPedidoAltRow a, .gridPedidoAltRow a:link, .gridPedidoAltRow a:visited, .gridPedidoAltRow a:active, .gridPedidoAltRow a:hover {
+    text-decoration: none;
+    padding: 5px;
+    color: #333;
+}
+
+.gridPedidoRow a:link, .gridPedidoRow a:visited, .gridPedidoRow a:active, .gridPedidoRow a:hover {
+    text-decoration: none;
+    padding: 5px;
+    color: #333;
+}
+
+
+.gridPedidoFooter td {
+    padding: 10px;
+    background-color: #808080;
+    color: #fff;
+    font-size: 10pt;
+    text-align: left;
+}
+
+.gridPedidoFooter a {
+    font-weight: bold;
+    color: #000;
+}
+
+.gridPedidoLarge {
+    width: 290px;
+}
+
+.gridPedidoMedio {
+    width: 80px;
+}
+
+.gridPedidoNormal {
+    width: 40px;
+}
+
+.gridPedidoNormalLeft {
+    width: 40px;
+    text-align: left;
+}
+
+
+.gridPedidoSmall {
+    width: 10px;
+    text-align: center;
+}
+
+.gridPedidoNormal_num {
+    width: 40px;
+    text-align: right;
+}
+
+/*------------------------------------------------------------*/
+
+
+
+.gridCelularTable {
+    margin: 2px;
+    padding: 4px;
+    border: 1px #c8c8c8 solid;
+    border-collapse: collapse;
+    background-color: #fff;
+    color: #fff;
+    min-width: 98%;
+    font-size: 12pt;
+}
+
+.gridCelularHead th {
+    font-weight: bold;
+    background-color: #808080;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    font-size: 12pt;
+}
+
+.gridCelularHead a:link, .gridCelularHead a:visited, .gridCelularHead a:active, .gridCelularHead a:hover {
+    color: #fff;
+}
+
+.gridCelularHead a:hover {
+    text-decoration: none;
+}
+
+.gridCelularTable tr.gridCelularAltRow {
+    background-color: #efeeef;
+    color: #333;
+}
+
+.gridCelularTable tr:hover {
+    background-color: #5F9EA0;
+    text-decoration: none;
+    color: #333;
+}
+
+.gridCelularTable tr:link {
+    background-color: #5F9EA0;
+    text-decoration: none;
+    color: #333;
+}
+
+
+.gridCelularAltRow td, .gridCelularAltRow td:link, .gridCelularAltRow td:visited, .gridCelularAltRow td:active, .gridCelularAltRow td:hover {
+    background-color: #efeeef;
+    text-decoration: none;
+    padding: 5px;
+    color: #333;
+}
+
+.gridCelularRow td, .gridCelularRow td:link, .gridCelularRow td:visited, .gridCelularRow td:active, .gridCelularRow td:hover {
+    text-decoration: none;
+    padding: 5px;
+    color: #333;
+}
+
+.gridCelularAltRow a, .gridCelularAltRow a:link, .gridCelularAltRow a:visited, .gridCelularAltRow a:active, .gridCelularAltRow a:hover {
+    text-decoration: none;
+    padding: 5px;
+    color: #333;
+}
+
+.gridCelularRow a:link, .gridCelularRow a:visited, .gridCelularRow a:active, .gridCelularRow a:hover {
+    text-decoration: none;
+    padding: 5px;
+    color: #333;
+}
+
+
+.gridCelularFooter td {
+    padding: 10px;
+    background-color: #808080;
+    color: #fff;
+    font-size: 10pt;
+    text-align: left;
+}
+
+.gridCelularFooter a {
+    font-weight: bold;
+    color: #000;
+}
+
+.gridCelularLarge {
+    width: 290px;
+}
+
+.gridCelularMedio {
+    width: 80px;
+}
+
+.gridCelularMedioLeft {
+    width: 80px;
+    text-align: left;
+}
+
+
+.gridCelularNormal {
+    width: 40px;
+}
+
+.gridCelularNormalLeft {
+    width: 40px;
+    text-align: left;
+}
+
+.gridCelularSmall {
+    width: 10px;
+    text-align: center;
+}
+
+.gridCelularSmallLeft {
+    width: 10px;
+    text-align: left;
+}
+
+.gridCelularNormal_num {
+    width: 40px;
+    text-align: right;
+}
+
+

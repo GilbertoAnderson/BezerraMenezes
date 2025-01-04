@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05a4625965c045a598553aad39c14042" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblAssociado" Width="1.5" PointX="3.75" PointY="7.25" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblCarrinhoEntrada" Width="1.5" PointX="10.25" PointY="10.5" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblCategorias" Width="1.5" PointX="5.75" PointY="11" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblConta" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblEstoque" Width="1.5" PointX="10.25" PointY="14.375" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblExtrato" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblFluxo" Width="1.5" PointX="0.75" PointY="11.5" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblFluxoColunas" Width="1.5" PointX="2.75" PointY="12.5" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblFormaPagamento" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblLancamento" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblLivros" Width="1.5" PointX="8" PointY="10.125" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblParcela" Width="1.5" PointX="6" PointY="3.625" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblPerfil" Width="1.5" PointX="8.75" PointY="2.375" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblSubconta" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblTipoEstoque" Width="1.5" PointX="8" PointY="15" />
+        <EntityTypeShape EntityType="db_bezerramenezesModel.tblUsuario" Width="1.5" PointX="11" PointY="1.625" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_tblParcelaAssociado" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_CarrinhoLivros" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_CarrinhoTipoEstoque" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_LivrosCategoria" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_tblLancamentoConta" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_EstoqueLivros" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_tblParcelaFormaPagamento" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_tblLancamentoSubconta" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_tblParcelaSubconta" />
+        <AssociationConnector Association="db_bezerramenezesModel.fk_tblPerfil" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

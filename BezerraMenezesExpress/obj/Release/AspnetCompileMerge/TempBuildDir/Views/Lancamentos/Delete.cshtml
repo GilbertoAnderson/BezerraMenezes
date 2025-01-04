@@ -1,0 +1,72 @@
+﻿@model BezerraMenezesExpress.Models.tblLancamento
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Excluir</h2>
+
+<h3>Você realmente deseja excluir este registro?</h3>
+<div>
+    <h4>Lancamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            Data
+        </dt>
+
+        <dd>            
+            @Html.ValueFor(model => model.Pagamento, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Previsto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Previsto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblConta.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblConta.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblSubconta.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblSubconta.Descricao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Retornar a lista", "LancamentosConta", new { id = Model.idConta })
+        </div>
+    }
+</div>

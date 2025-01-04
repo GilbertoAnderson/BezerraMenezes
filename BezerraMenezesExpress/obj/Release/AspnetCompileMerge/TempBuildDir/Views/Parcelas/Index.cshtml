@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BezerraMenezesExpress.Models.tblParcela>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Contribuições</h2>
+
+<p>
+    @Html.ActionLink("Nova", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ano)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pagamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblAssociado.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ano)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pagamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblAssociado.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.idParcela }) &nbsp;|&nbsp;
+            @Html.ActionLink("Detalhe", "Details", new { id=item.idParcela })  &nbsp;|&nbsp;
+            @Html.ActionLink("Excluir", "Delete", new { id=item.idParcela })
+        </td>
+    </tr>
+}
+
+</table>

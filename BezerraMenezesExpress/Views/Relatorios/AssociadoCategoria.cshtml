@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BezerraMenezesExpress.Models.tblAssociado>
+
+
+@{
+    ViewBag.Title = "Associados Categoria";
+}
+
+<h2>
+    Associados Categoria
+</h2>
+
+<p>
+</p>
+
+<div class="form-group">
+    <div class="col-md-12">
+        @{
+            var grid = new WebGrid(
+                source: Model,
+                rowsPerPage: 500,
+                canPage: true,
+                canSort: true,
+                defaultSort: "Nome"
+                );
+        }
+
+        <div id="grid">
+            @grid.GetHtml(
+                    tableStyle: "gridPedidoTable",
+                    headerStyle: "gridPedidoHead",
+                    footerStyle: "gridPedidoFooter",
+                    rowStyle: "gridPedidoRow",
+                    alternatingRowStyle: "gridPedidoAltRow",
+            columns: grid.Columns(
+                 //grid.Column("Matricula", "Matricula"),
+                 //grid.Column("Nome", "Nome"),
+                 //grid.Column("Email", "Email"),
+                 //grid.Column("Celular", "Celular"),
+                 //grid.Column("Nascimento", "Nascimento",format: (item) => string.Format("{0:dd/MM/yyyy}", item.Nascimento)),
+                 //grid.Column("Endereco", "Endereco"),
+                 //grid.Column("Complemento", "Complemento"),
+                 //grid.Column("Bairro", "Bairro"),
+                 //grid.Column("Cidade", "Cidade"),
+                 //grid.Column("UF", "UF"),
+                 //grid.Column("CEP", "CEP"),
+                 //grid.Column("dtCadastro", "dtCadastro", format: (item) => string.Format("{0:dd/MM/yyyy}", item.dtCadastro)),
+                 //grid.Column("dtMigracao", "dtMigracao"),
+                 //grid.Column("Categoria", "Categoria")
+
+                 grid.Column("Matricula", format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", "Associados",  new { id = item.idAssociado }) + " title='Consultar' >" + @item.Matricula + " </a>"), style: "gridPedidoSmall"),
+                 grid.Column("Nome", format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", "Associados", new { id = item.idAssociado }) + " title='Consultar' >" + @item.Nome + " </a>"), style: "gridPedidoLarge"),
+                 grid.Column("Email", format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", "Associados", new { id = item.idAssociado }) + " title='Consultar' >" + @item.Email + " </a>"), style: "gridPedidoLarge"),
+                 grid.Column("Celular", format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", "Associados", new { id = item.idAssociado }) + " title='Consultar' >" + @item.Celular + " </a>"), style: "gridPedidoSmall"),
+                 grid.Column("Nascimento", format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", "Associados", new { id = item.idAssociado }) + " title='Consultar' >" + string.Format("{0:dd/MM/yyyy}", item.Nascimento) + " </a>"), style: "gridPedidoSmall"),
+                 //grid.Column("Endereco", format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", "Associados", new { id = item.idAssociado }) + " title='Consultar' >" + @item.Endereco + " </a>"), style: "gridPedidoLarge"),
+                 // grid.Column("Compl", format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", "Associados", new { id = item.idAssociado }) + " title='Consultar' >" + @item.Complemento + " </a>"), style: "gridPedidoSmall"),
+                 //grid.Column("Bairro", format: (item) => new HtmlString("<a href=" + @Url.Action("Associados", "Edit", new { id = item.idAssociado }) + " title='Consultar' >" + @item.Bairro + " </a>"), style: "gridPedidoLarge"),
+                 //grid.Column("Cidade", format: (item) => new HtmlString("<a href=" + @Url.Action("Associados", "Edit", new { id = item.idAssociado }) + " title='Consultar' >" + @item.Cidade + " </a>"), style: "gridPedidoLarge"),
+                 //grid.Column("Complemento", format: (item) => new HtmlString("<a href=" + @Url.Action("Associados", "Edit", new { id = item.idAssociado }) + " title='Consultar' >" + @item.Complemento + " </a>"), style: "gridPedidoSmall"),
+                 //grid.Column("UF", format: (item) => new HtmlString("<a href=" + @Url.Action("Associados", "Edit", new { id = item.idAssociado }) + " title='Consultar' >" + @item.UF + " </a>"), style: "gridPedidoSmall"),
+                 //grid.Column("CEP", format: (item) => new HtmlString("<a href=" + @Url.Action("Associados", "Edit", new { id = item.idAssociado }) + " title='Consultar' >" + @item.CEP + " </a>"), style: "gridPedidoSmall"),
+
+                 grid.Column("dtCadastro", format: (item) => new HtmlString("<a href=" + @Url.Action("Associados", "Edit", new { id = item.idAssociado }) + " title='Consultar' >" + string.Format("{0:dd/MM/yyyy}", item.dtCadastro) + " </a>"), style: "gridPedidoSmall"),
+                //grid.Column("dtMigracao",  format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", new { id = item.idAssociado }) + " title='Consultar' >" + string.IsNullOrEmpty(item.dtMigracao) ? string.Empty:string.Format("{0:dd/MM/yyyy}", item.dtMigracao) + " </a>"), style: "gridPedidoSmall"),
+                //grid.Column("dtMigracao", format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", new { id = item.idAssociado }) + " title='Consultar' >" + string.IsNullOrEmpty(item.dtMigracao) ? string.Empty : item.dtMigracao + " </a>"), style: "gridPedidoSmall"),
+                 grid.Column("dtMigracao", format: (item) => item.dtMigracao == null ? "-" : string.Format("{0:dd/MM/yyyy}", item.dtMigracao) ),
+
+                 grid.Column("Categoria", format: (item) => new HtmlString("<a href=" + @Url.Action("Associados", "Edit", new { id = item.idAssociado }) + " title='Consultar' >" + @item.Categoria + " </a>"), style: "gridPedidoSmall")
+
+                )
+
+            )
+        </div>
+    </div>
+
+</div>
+
+
+
+

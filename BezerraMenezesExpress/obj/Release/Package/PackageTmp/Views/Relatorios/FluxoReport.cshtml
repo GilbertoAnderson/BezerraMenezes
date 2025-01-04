@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BezerraMenezesExpress.Models.tblFluxo>
+
+
+@{
+    ViewBag.Title = "FluxoReport";
+}
+
+<h2>Fluxo da conta @ViewBag.Conta </h2>
+
+@{
+    ViewBag.Title = "Fluxo";
+}
+
+<p>
+</p>
+
+@{
+    var grid = new WebGrid(
+        source: Model,
+        rowsPerPage: 50,
+        canPage: true,
+        canSort: false,
+        defaultSort: "Data"
+        );
+}
+<div id="grid">
+    @grid.GetHtml(
+    tableStyle: "gridTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    
+    columns: grid.Columns(
+        grid.Column("Subconta", "Subconta"),
+       grid.Column("col01", @ViewBag.col01),
+       grid.Column("col02", @ViewBag.col02),
+       grid.Column("col03", @ViewBag.col03),
+       grid.Column("col04", @ViewBag.col04),
+       grid.Column("col05", @ViewBag.col05),
+       grid.Column("col06", @ViewBag.col06),
+       grid.Column("col07", @ViewBag.col07),
+       grid.Column("col08", @ViewBag.col08),
+       grid.Column("col09", @ViewBag.col09),
+       grid.Column("col10", @ViewBag.col10),
+       grid.Column("col11", @ViewBag.col11),
+       grid.Column("col12", @ViewBag.col12),        
+       grid.Column("Total", "Total")
+       
+        )
+
+    )
+</div>
+
+

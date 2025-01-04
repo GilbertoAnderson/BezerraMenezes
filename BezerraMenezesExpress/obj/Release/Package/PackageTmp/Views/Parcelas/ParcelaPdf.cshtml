@@ -1,0 +1,74 @@
+﻿@model BezerraMenezesExpress.Models.tblParcela
+
+@{
+    Layout = null;
+}
+<head>
+    <style type="text/css">
+        div {
+            font-family: 'Arial';
+        }
+    </style>
+</head>
+
+
+@{
+    ViewBag.Title = "Details";
+}
+<asp:Panel ID="pnlImpressao" runat="server" Width="690px" Height="350px" ScrollBars="Auto">
+
+
+    <div>       
+        <table>
+            <tr>
+                <td colspan="2">Comprovante de Contribuição<br /><br /></td>
+            </tr>
+            <tr>
+                <td colspan="2"> <h3> Parcela @Html.DisplayFor(model => model.Mes) de @Html.DisplayFor(model => model.Ano)</h3></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"> @Html.DisplayFor(model => model.tblAssociado.Nome)<br /><br /></td>
+            </tr>
+            <tr>
+                <td>Matricula</td>
+                <td> @Html.DisplayFor(model => model.tblAssociado.Matricula)</td>
+            </tr>
+            <tr>
+                <td>Data </td>
+                <td> @Html.ValueFor(model => model.Pagamento, "{0:dd/MM/yyyy}")</td>
+            </tr>
+            <tr>
+                <td>Tipo</td>
+                <td>@Html.DisplayFor(model => model.tblSubconta.Descricao)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Valor)</td>
+                <td>@Html.DisplayFor(model => model.Valor)</td>
+            </tr>
+            <tr>
+                <td>Forma</td>
+                <td>
+                    @Html.DisplayFor(model => model.tblFormaPagamento.Descricao)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <br /><br />-------------------------------------<br />
+                    assinatura do responsável
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <br /><font size="1">&copy; @DateTime.Now.Year - Centro Espirita Bezerra de Menezes</font>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+</asp:Panel>
+
+
+
+

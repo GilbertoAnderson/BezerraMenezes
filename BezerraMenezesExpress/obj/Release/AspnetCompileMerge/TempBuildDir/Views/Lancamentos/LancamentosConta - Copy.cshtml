@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BezerraMenezesExpress.Models.tblLancamento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lançamentos da conta @ViewBag.NomeConta </h2>
+
+<p>
+</p>
+<table class="table">
+    <tr>
+        <th>            
+            Data
+        </th>
+        <th>
+            SubConta
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Previsto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>           
+            @String.Format("{0:d}", item.Pagamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblSubconta.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Previsto)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.idLancamento }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.idLancamento }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.idLancamento })
+        </td>
+    </tr>
+}
+
+</table>

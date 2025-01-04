@@ -1,0 +1,291 @@
+﻿@model BezerraMenezesExpress.Models.tblCarrinhoEntrada
+
+@{
+    ViewBag.Title = "Nova Entrada Livro";
+}
+
+<h2>Livros</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Lista de Entrada</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NotaFiscal,"Nota Fiscal * ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NotaFiscal, new { htmlAttributes = new { @class = "form-control" , @Value= ViewBag.NotaFiscal,  @onblur = "Verifica_NotaFiscal();" } })
+                @Html.ValidationMessageFor(model => model.NotaFiscal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fornecedor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fornecedor, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Fornecedor } })
+                @Html.ValidationMessageFor(model => model.Fornecedor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dtMovimento, "Data de Entrada *",htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dtMovimento, new { htmlAttributes = new { @class = "form-control", @Value =ViewBag.DtMovimento } })
+                @Html.ValidationMessageFor(model => model.dtMovimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ISBN, "ISBN *", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ISBN, new { htmlAttributes = new { @class = "form-control",  @onblur = "pequisaNomeLivro();" } })
+                @Html.ValidationMessageFor(model => model.ISBN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                &nbsp;
+            </div>
+            <div class="col-md-10" >
+               <label id= "lbl_NomeLivro"></label>  
+             </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantidade, "Quantidade *", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantidade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valor, "Valor Unitário *", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.Hidden("idTipoEstoque", 1)
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Incluir novo livro na lista de entrada" class="btn btn-default" />
+            </div>
+        </div>
+        @if (ViewBag.NotaFiscal != "")
+        {
+        <div class="form-group">
+            <div class="col-md-2">  &nbsp;   </div>
+            <div class="col-md-8" id="gridLista" style="border:dashed; padding:10px 10px 10px 10px; border-color:dodgerblue">               
+                    @Html.Partial("_LivrosMesmaNotaFiscal")
+            </div>
+            <div class="col-md-2">   &nbsp;    </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">  &nbsp;   </div>
+            <div class="col-md-4" id="gridLista" style="border:dashed; padding:10px 10px 10px 10px; border-color:dodgerblue">
+
+                <label id="lbl_ValorTotalTexto">Valor Total:</label> 
+                <label id="lbl_ValorTotal">@ViewBag.ValorTotal</label> 
+            </div>
+            <div class="col-md-2">   &nbsp;    </div>
+        </div>
+
+        }
+
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Abandonar Entrada", "EntradaIndex")
+</div>
+
+@section Scripts {
+
+
+    <script type="text/javascript" src="../../scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/methods_pt.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker-globalize.js"></script>
+    <script src="~/Scripts/locales/bootstrap-datepicker.pt-BR.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
+
+    <script src="~/Scripts/globalize/globalize.js"></script>
+    <script src="~/Scripts/globalize/cultures/globalize.culture.pt-BR.js"></script>
+
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.date-picker').datepicker({
+            dateFormat: 'dd/mm/yy',
+            mandatory: true,
+            changeYear: false,
+            changeMonth: false,
+            highlightWeek: true
+
+        });
+
+    });
+
+
+
+    $.validator.methods.number = function (value, element) {
+        var val = Globalize.parseFloat(value);
+        return this.optional(element) ||
+            (val);
+    }
+
+    $.validator.methods.date = function (value, element) {
+        var val = Globalize.parseDate(value);
+        return this.optional(element) ||
+            (val);
+    }
+
+    $(function () {
+
+        Globalize.culture('pt-BR');
+
+        jQuery.extend(jQuery.validator.methods, {
+            range: function (value, element, param) {
+                //Use the Globalization plugin to parse the value
+                var val = Globalize.parseFloat(value);
+                return this.optional(element) || (
+                    val >= param[0] && val <= param[1]);
+            }
+        });
+
+    });
+
+
+
+    $("#form").submit(function () {
+        validar();
+    });
+
+
+    function validar() {
+
+        var _ISBN = $('#ISBN').val();
+        var _Quantidade = $('#Quantidade').val();
+        var _NotaFiscal = $('#NotaFiscal').val();
+        var _Fornecedor = $('#Fornecedor').val();
+        var _dtMovimento = $('#dtMovimento').val();
+        var _Valor = $('#Valor').val();
+
+        if (_Fornecedor == "") {
+            alert("o Fornecedor deve ser preenchido!");
+            return false;
+        }
+
+        if (_NotaFiscal == "") {
+            alert("A Nota Fiscal deve ser preenchida!");
+            return false;
+        }
+
+
+        if (_ISBN.length >> 13) {
+            alert("o ISBN deve ter 13 digitos vvvv!");
+            return false;
+        }
+
+        if (!$.isNumeric(_ISBN)) {
+            alert("o ISBN deve conter somente números!");
+            return false;
+        }
+        //........................... validar quantidade
+        if (_Quantidade == 0) {
+            alert("A Quantidade deve ser maior que 1!");
+            return false;
+        }
+
+        if (!$.isNumeric(_Quantidade)) {
+            alert("A Quantidade deve conter somente números!");
+            return false;
+        }
+
+        //........................... validar valor
+        if (_Valor == 0) {
+            alert("O Valor deve ser maior que 1!");
+            return false;
+        }
+
+        if (!$.isNumeric(_Valor)) {
+            alert("O valor deve conter somente números!");
+            return false;
+        }
+    }
+
+
+    function Verifica_NotaFiscal() {
+
+        var _NotaFiscal = $('#NotaFiscal').val();
+
+        if(_NotaFiscal!= null || _NotaFiscal != "")
+        {
+            alert("pesquisar a nota");
+            //pequisaNotaFiscal();
+        }
+    }
+
+
+    function pequisaNomeLivro() {
+
+        var _ISBN = $('#ISBN').val();
+
+        if (_ISBN.length != 13) {
+            alert("o ISBN deve ter 13 digitos");
+            return false;
+        }
+
+        if (!$.isNumeric(_ISBN)) {
+            alert("o ISBN deve conter somente números");
+
+            return false;
+        }
+
+
+        $.ajax(
+        {
+            type: "POST",
+            url: '@Url.Action("PesquisarNomeLivro", "CarrinhosEntrada")',
+            data: {
+                "ISBN": _ISBN
+            },
+            success: function (data) {
+                $('#lbl_NomeLivro').html(data);
+                if(data =="livro não encontrado"){                
+                    alert(data);
+                };
+            }
+
+        });
+        //location.reload();
+
+    }
+
+
+        var CursorCampo = "@ViewBag.CursorCampo";
+        if (CursorCampo == "ISBN") {
+            $("#" + "@Html.IdFor(model => model.ISBN)").focus();
+        }
+
+    </script>
+
+    }

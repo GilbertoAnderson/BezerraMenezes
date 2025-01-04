@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BezerraMenezesExpress.Models.tblAssociado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Associados</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.CheckBox("isAtivos", true) Somente ativos &nbsp;&nbsp;
+        Procurar por : @Html.TextBox("strCriterio") &nbsp;
+        <input type="submit" value="Procurar" class="btn btn-default" /> &nbsp;
+        <a href="@Url.Action("Create")"> <input type="button" value="Novo" class="btn btn-default" /></a>
+    </p>
+}
+
+
+@{
+    var grid = new WebGrid(
+        source: Model,
+        rowsPerPage: 20,
+        canPage: true,
+        canSort: true,
+        defaultSort: "Pagamento"
+        );
+}
+
+<div id="grid">
+    @grid.GetHtml(
+tableStyle: "gridTable",
+headerStyle: "gridHead",
+footerStyle: "gridFooter",
+rowStyle: "gridRow",
+alternatingRowStyle: "gridAltRow",
+columns: grid.Columns(
+    grid.Column("Nome", "Nome"),
+    grid.Column("Email", "Email"),
+    grid.Column("Celular", "Celular"),
+    grid.Column("Nascimento", "Nascimento"),
+    //format: (item) => string.Format("{0:dd/MM/yyyy}", item.Nascimento)),
+    grid.Column("Ativo", "Ativo"),
+    grid.Column(format: (item) => new HtmlString("<a href=" + @Url.Action("Details", new { id = item.idAssociado }) + " title='Consultar' > <i class='glyphicon glyphicon-search'> </i></a>")),
+    grid.Column(format: (item) => new HtmlString("<a href=" + @Url.Action("Edit", new { id = item.idAssociado }) + " title='Editar' > <i class='glyphicon glyphicon-pencil'> </i></a>")),
+    grid.Column(format: (item) => new HtmlString("<a href=" + @Url.Action("Delete", new { id = item.idAssociado }) + " title='Excluir' > <i class='glyphicon glyphicon-trash'> </i></a>"))
+
+    )
+
+)
+
+</div>
+
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var strCriterio = $("#strCriterio").val();
+            var isAtivos = $("#isAtivos").val();
+
+            alert(isAtivos);
+            alert(strCriterio);
+            return true;
+
+        }
+
+    </script>
+
+}

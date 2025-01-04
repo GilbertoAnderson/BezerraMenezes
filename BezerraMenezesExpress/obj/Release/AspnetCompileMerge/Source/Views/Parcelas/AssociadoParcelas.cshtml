@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BezerraMenezesExpress.Models.tblParcela>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2> Contribuições Realizadas</h2>
+
+<p>
+     @ViewBag.NomeAssociado 
+</p>
+
+
+@*@Html.ActionLink("Excel", "ExportTo", new object { ReportType = "PDF" })|
+@Html.ActionLink("PDF", "ExportTo", new object { ReportType = "Excel" })*@
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ano)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pagamento)
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ano)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mes)
+        </td>
+        <td>            
+            @String.Format("{0:d}", item.Pagamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblSubconta.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @*@Html.ActionLink("Comprovante", "Details", new { id=item.idParcela }) | &nbsp; *@                       
+            @*@Html.ActionLink("Comprovante", "ParcelaPdf", new { id = item.idParcela }, new { target = "_blank" })   &nbsp;  | &nbsp;*@              
+            @*@Html.ActionLink("Excluir", "Delete", new { id = item.idParcela })  &nbsp;  |*@
+
+            <a href="@Url.Action("ParcelaPdf",new { id = item.idParcela })" target = "_blank" title="Imprimir comprovante"> <i class='glyphicon glyphicon-print'> </i></a>
+            <a href="@Url.Action("Delete", new { id = item.idParcela })" title="Excluir parcela"> <i class='glyphicon glyphicon-trash'> </i></a>
+
+            
+        </td>
+    </tr>
+}
+
+</table>

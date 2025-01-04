@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BezerraMenezesExpress.Models.tblAssociado>
+
+@{
+    ViewBag.Title = "Historico Associados";
+}
+
+<h2>Histórico dos Associados</h2>
+
+@using( Html.BeginForm())
+{ 
+    <p>
+        Procurar por : @Html.TextBox("strCriterio") &nbsp;
+        <input type="submit" value="Procurar" />
+    </p>
+} 
+
+<p> 
+</p>
+
+    @{
+        var grid = new WebGrid(
+            source: Model,
+            rowsPerPage: 10,
+            canPage: true,
+            canSort: true,
+            defaultSort: "Nome"
+            );
+    }
+    <div id="grid">
+        @grid.GetHtml(
+    tableStyle: "gridTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+        grid.Column("Nome", "Nome"),
+        grid.Column("Celular", "Celular"),
+        grid.Column(format: (item) =>
+                     Html.ActionLink("Contribuições", "AssociadoParcelas", new { id = item.idAssociado, controller = "Parcelas"  },new {target="_blank"}))
+
+        )
+        
+    )
+    </div>
+
+

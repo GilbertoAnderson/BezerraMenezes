@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BezerraMenezesExpress.Models.tblExtrato>
+
+
+@{
+    ViewBag.Title = "ExtratoReport";
+}
+
+<h2>Extrato da conta @ViewBag.Conta  </h2>
+
+@{
+    ViewBag.Title = "Extrato";
+}
+
+<h2>      
+    de @ViewBag.DtInicio.ToString("dd-MM-yyyy")  até @ViewBag.DtFim.ToString("dd-MM-yyyy") 
+</h2>
+
+<p>
+</p>
+
+@{
+    var grid = new WebGrid(
+        source: Model,
+        rowsPerPage: 50,
+        canPage: true,
+        canSort: false,
+        defaultSort: "Data"
+        );
+}
+<div id="grid">
+    @grid.GetHtml(
+    tableStyle: "gridTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+        grid.Column("Data", "Data",
+        format: (item) => string.Format("{0:dd/MM/yyyy}", item.Data)),
+                        grid.Column("Subconta", "Subconta"),
+        grid.Column("Descricao", "Descrição"),
+        grid.Column("Valor", "Valor",
+        format: (item) => string.Format("{0:C2}", item.Valor)),
+        grid.Column("Saldo", "Saldo",
+        format: (item) => string.Format("{0:C2}", item.Saldo))
+       
+        )
+
+    )
+</div>
+
+

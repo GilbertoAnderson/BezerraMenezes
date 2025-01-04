@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/" />
+  <setParameter name="db_BezerraMenezesEntities-Web.config Connection String" value="metadata=res://*/Models.ModelBezerraMenezes.csdl|res://*/Models.ModelBezerraMenezes.ssdl|res://*/Models.ModelBezerraMenezes.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=dbbezerramenezes.cg10idce2cs8.us-east-2.rds.amazonaws.com;initial catalog=db_bezerramenezes;persist security info=True;user id=sa;password=B3z3rr4M3n3z35;MultipleActiveResultSets=True;App=EntityFramework&quot;" />
+</parameters>

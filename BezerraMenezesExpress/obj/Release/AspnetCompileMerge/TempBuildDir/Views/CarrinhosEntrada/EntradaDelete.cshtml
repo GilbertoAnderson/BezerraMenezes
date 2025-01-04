@@ -1,0 +1,72 @@
+﻿@model BezerraMenezesExpress.Models.tblCarrinhoEntrada
+
+@{
+    ViewBag.Title = "Exclusão Entrada Livros";
+}
+
+<h2>Livros</h2>
+
+<h3>Você realmente quer excluir este livro da Lista de Entrada?</h3>
+<div>
+    <h4>Lista Entrada</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nota Fiscal
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotaFiscal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornecedor)
+        </dd>
+
+        <dt>
+            Data Entrada
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtMovimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblLivros.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblLivros.Titulo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Confirmar a Exclusão" class="btn btn-default" /> |
+            @Html.ActionLink("Abandonar Exclusão", "EntradaIndex")
+        </div>
+    }
+</div>

@@ -1,0 +1,41 @@
+﻿@model BezerraMenezesExpress.Models.tblSubconta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Subconta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo, new { htmlAttributes = new { @class = "form-control" } })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="  @Url.Action("Index") " title='Retornar a lista'> <i class='glyphicon glyphicon-th-list'> </i></a>&nbsp;
+    <a href="  @Url.Action("Edit", new { id = Model.idSubconta })    " title='Editar'> <i class='glyphicon glyphicon-pencil'> </i></a>
+</p>

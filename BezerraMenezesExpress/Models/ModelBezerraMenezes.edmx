@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ModelBezerraMenezes.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAssociado">
+          <Key>
+            <PropertyRef Name="idAssociado" />
+          </Key>
+          <Property Name="idAssociado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="240" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="240" Nullable="false" />
+          <Property Name="Celular" Type="varchar" MaxLength="25" />
+          <Property Name="Nascimento" Type="datetime" />
+          <Property Name="Ativo" Type="bit" />
+          <Property Name="Endereco" Type="varchar" MaxLength="200" />
+          <Property Name="Complemento" Type="varchar" MaxLength="30" />
+          <Property Name="Bairro" Type="varchar" MaxLength="100" />
+          <Property Name="Cidade" Type="varchar" MaxLength="100" />
+          <Property Name="UF" Type="varchar" MaxLength="2" />
+          <Property Name="CEP" Type="varchar" MaxLength="90" />
+          <Property Name="Matricula" Type="varchar" MaxLength="14" />
+          <Property Name="dtCadastro" Type="datetime" />
+          <Property Name="dtMigracao" Type="datetime" />
+          <Property Name="categoria" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblCarrinhoEntrada">
+          <Key>
+            <PropertyRef Name="idCarrinhoEntrada" />
+          </Key>
+          <Property Name="idCarrinhoEntrada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipoEstoque" Type="int" Nullable="false" />
+          <Property Name="NotaFiscal" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fornecedor" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="dtMovimento" Type="datetime" Nullable="false" />
+          <Property Name="ISBN" Type="bigint" Nullable="false" />
+          <Property Name="Quantidade" Type="int" />
+          <Property Name="Valor" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tblCategorias">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ativo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblConta">
+          <Key>
+            <PropertyRef Name="idConta" />
+          </Key>
+          <Property Name="idConta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ativo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblEstoque">
+          <Key>
+            <PropertyRef Name="idEstoque" />
+          </Key>
+          <Property Name="idEstoque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ISBN" Type="bigint" Nullable="false" />
+          <Property Name="NotaFiscal" Type="varchar" MaxLength="20" />
+          <Property Name="dtMovimento" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="idTipo" Type="int" Nullable="false" />
+          <Property Name="Quantidade" Type="int" />
+          <Property Name="Valor" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="tblExtrato">
+          <Key>
+            <PropertyRef Name="idExtrato" />
+          </Key>
+          <Property Name="idExtrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="datetime" />
+          <Property Name="Subconta" Type="varchar" MaxLength="30" />
+          <Property Name="Descricao" Type="varchar" MaxLength="200" />
+          <Property Name="Valor" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="Saldo" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="Conta" Type="varchar" MaxLength="50" />
+          <Property Name="DtInicio" Type="datetime" />
+          <Property Name="DtFim" Type="datetime" />
+          <Property Name="Filtro" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tblFluxo">
+          <Key>
+            <PropertyRef Name="idFluxo" />
+          </Key>
+          <Property Name="idFluxo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subconta" Type="varchar" MaxLength="30" />
+          <Property Name="col01" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col02" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col03" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col04" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col05" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col06" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col07" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col08" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col09" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col10" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col11" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="col12" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tblFluxoColunas">
+          <Key>
+            <PropertyRef Name="idFluxoColuna" />
+          </Key>
+          <Property Name="idFluxoColuna" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="col01" Type="varchar" MaxLength="10" />
+          <Property Name="col02" Type="varchar" MaxLength="10" />
+          <Property Name="col03" Type="varchar" MaxLength="10" />
+          <Property Name="col04" Type="varchar" MaxLength="10" />
+          <Property Name="col05" Type="varchar" MaxLength="10" />
+          <Property Name="col06" Type="varchar" MaxLength="10" />
+          <Property Name="col07" Type="varchar" MaxLength="10" />
+          <Property Name="col08" Type="varchar" MaxLength="10" />
+          <Property Name="col09" Type="varchar" MaxLength="10" />
+          <Property Name="col10" Type="varchar" MaxLength="10" />
+          <Property Name="col11" Type="varchar" MaxLength="10" />
+          <Property Name="col12" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblFormaPagamento">
+          <Key>
+            <PropertyRef Name="idFormaPagamento" />
+          </Key>
+          <Property Name="idFormaPagamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ativo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblLancamento">
+          <Key>
+            <PropertyRef Name="idLancamento" />
+          </Key>
+          <Property Name="idLancamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idConta" Type="int" Nullable="false" />
+          <Property Name="idSubconta" Type="int" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Pagamento" Type="datetime" />
+          <Property Name="Valor" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Previsto" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblLivros">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="bigint" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="Autor" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="AutorEspiritual" Type="varchar" MaxLength="120" />
+          <Property Name="Editora" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="Edicao" Type="varchar" MaxLength="10" />
+          <Property Name="Categoria" Type="int" Nullable="false" />
+          <Property Name="AnoPublicacao" Type="int" />
+          <Property Name="Descricao" Type="varchar" MaxLength="240" />
+          <Property Name="Capa" Type="varchar" MaxLength="120" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="tblParcela">
+          <Key>
+            <PropertyRef Name="idParcela" />
+          </Key>
+          <Property Name="idParcela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAssociado" Type="int" Nullable="false" />
+          <Property Name="idformaPagamento" Type="int" Nullable="false" />
+          <Property Name="idSubconta" Type="int" Nullable="false" />
+          <Property Name="Ano" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="int" Nullable="false" />
+          <Property Name="Pagamento" Type="datetime" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPerfil">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ativo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblSubconta">
+          <Key>
+            <PropertyRef Name="idSubconta" />
+          </Key>
+          <Property Name="idSubconta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ativo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblTipoEstoque">
+          <Key>
+            <PropertyRef Name="idTipoEstoque" />
+          </Key>
+          <Property Name="idTipoEstoque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ativo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPerfil" Type="int" Nullable="false" />
+          <Property Name="CodUsuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="240" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Telefone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="240" />
+          <Property Name="Celular" Type="varchar" MaxLength="25" />
+          <Property Name="Nascimento" Type="datetime" />
+          <Property Name="Ativo" Type="bit" />
+        </EntityType>
+        <Association Name="fk_CarrinhoLivros">
+          <End Role="tblLivros" Type="Self.tblLivros" Multiplicity="1" />
+          <End Role="tblCarrinhoEntrada" Type="Self.tblCarrinhoEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLivros">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="tblCarrinhoEntrada">
+              <PropertyRef Name="ISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarrinhoTipoEstoque">
+          <End Role="tblTipoEstoque" Type="Self.tblTipoEstoque" Multiplicity="1" />
+          <End Role="tblCarrinhoEntrada" Type="Self.tblCarrinhoEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoEstoque">
+              <PropertyRef Name="idTipoEstoque" />
+            </Principal>
+            <Dependent Role="tblCarrinhoEntrada">
+              <PropertyRef Name="idTipoEstoque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EstoqueLivros">
+          <End Role="tblLivros" Type="Self.tblLivros" Multiplicity="1" />
+          <End Role="tblEstoque" Type="Self.tblEstoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLivros">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="tblEstoque">
+              <PropertyRef Name="ISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LivrosCategoria">
+          <End Role="tblCategorias" Type="Self.tblCategorias" Multiplicity="1" />
+          <End Role="tblLivros" Type="Self.tblLivros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategorias">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="tblLivros">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblLancamentoConta">
+          <End Role="tblConta" Type="Self.tblConta" Multiplicity="1" />
+          <End Role="tblLancamento" Type="Self.tblLancamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblConta">
+              <PropertyRef Name="idConta" />
+            </Principal>
+            <Dependent Role="tblLancamento">
+              <PropertyRef Name="idConta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblLancamentoSubconta">
+          <End Role="tblSubconta" Type="Self.tblSubconta" Multiplicity="1" />
+          <End Role="tblLancamento" Type="Self.tblLancamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSubconta">
+              <PropertyRef Name="idSubconta" />
+            </Principal>
+            <Dependent Role="tblLancamento">
+              <PropertyRef Name="idSubconta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblParcelaAssociado">
+          <End Role="tblAssociado" Type="Self.tblAssociado" Multiplicity="1" />
+          <End Role="tblParcela" Type="Self.tblParcela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAssociado">
+              <PropertyRef Name="idAssociado" />
+            </Principal>
+            <Dependent Role="tblParcela">
+              <PropertyRef Name="idAssociado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblParcelaFormaPagamento">
+          <End Role="tblFormaPagamento" Type="Self.tblFormaPagamento" Multiplicity="1" />
+          <End Role="tblParcela" Type="Self.tblParcela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFormaPagamento">
+              <PropertyRef Name="idFormaPagamento" />
+            </Principal>
+            <Dependent Role="tblParcela">
+              <PropertyRef Name="idformaPagamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblParcelaSubconta">
+          <End Role="tblSubconta" Type="Self.tblSubconta" Multiplicity="1" />
+          <End Role="tblParcela" Type="Self.tblParcela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSubconta">
+              <PropertyRef Name="idSubconta" />
+            </Principal>
+            <Dependent Role="tblParcela">
+              <PropertyRef Name="idSubconta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblPerfil">
+          <End Role="tblPerfil" Type="Self.tblPerfil" Multiplicity="1" />
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPerfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="tblUsuario">
+              <PropertyRef Name="idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="func_fin_retorna_saldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+          <Parameter Name="idConta" Type="int" Mode="In" />
+          <Parameter Name="dtInicio" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_fin_rep_extrato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idConta" Type="int" Mode="In" />
+          <Parameter Name="dtInicio" Type="datetime" Mode="In" />
+          <Parameter Name="dtFim" Type="datetime" Mode="In" />
+          <Parameter Name="txtFiltro" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_fin_rep_fluxo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idConta" Type="int" Mode="In" />
+          <Parameter Name="dtInicio" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelBezerraMenezesStoreContainer">
+          <EntitySet Name="tblAssociado" EntityType="Self.tblAssociado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCarrinhoEntrada" EntityType="Self.tblCarrinhoEntrada" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCategorias" EntityType="Self.tblCategorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblConta" EntityType="Self.tblConta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEstoque" EntityType="Self.tblEstoque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExtrato" EntityType="Self.tblExtrato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFluxo" EntityType="Self.tblFluxo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFluxoColunas" EntityType="Self.tblFluxoColunas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFormaPagamento" EntityType="Self.tblFormaPagamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLancamento" EntityType="Self.tblLancamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLivros" EntityType="Self.tblLivros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblParcela" EntityType="Self.tblParcela" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPerfil" EntityType="Self.tblPerfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubconta" EntityType="Self.tblSubconta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTipoEstoque" EntityType="Self.tblTipoEstoque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_CarrinhoLivros" Association="Self.fk_CarrinhoLivros">
+            <End Role="tblLivros" EntitySet="tblLivros" />
+            <End Role="tblCarrinhoEntrada" EntitySet="tblCarrinhoEntrada" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CarrinhoTipoEstoque" Association="Self.fk_CarrinhoTipoEstoque">
+            <End Role="tblTipoEstoque" EntitySet="tblTipoEstoque" />
+            <End Role="tblCarrinhoEntrada" EntitySet="tblCarrinhoEntrada" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EstoqueLivros" Association="Self.fk_EstoqueLivros">
+            <End Role="tblLivros" EntitySet="tblLivros" />
+            <End Role="tblEstoque" EntitySet="tblEstoque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LivrosCategoria" Association="Self.fk_LivrosCategoria">
+            <End Role="tblCategorias" EntitySet="tblCategorias" />
+            <End Role="tblLivros" EntitySet="tblLivros" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblLancamentoConta" Association="Self.fk_tblLancamentoConta">
+            <End Role="tblConta" EntitySet="tblConta" />
+            <End Role="tblLancamento" EntitySet="tblLancamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblLancamentoSubconta" Association="Self.fk_tblLancamentoSubconta">
+            <End Role="tblSubconta" EntitySet="tblSubconta" />
+            <End Role="tblLancamento" EntitySet="tblLancamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblParcelaAssociado" Association="Self.fk_tblParcelaAssociado">
+            <End Role="tblAssociado" EntitySet="tblAssociado" />
+            <End Role="tblParcela" EntitySet="tblParcela" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblParcelaFormaPagamento" Association="Self.fk_tblParcelaFormaPagamento">
+            <End Role="tblFormaPagamento" EntitySet="tblFormaPagamento" />
+            <End Role="tblParcela" EntitySet="tblParcela" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblParcelaSubconta" Association="Self.fk_tblParcelaSubconta">
+            <End Role="tblSubconta" EntitySet="tblSubconta" />
+            <End Role="tblParcela" EntitySet="tblParcela" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblPerfil" Association="Self.fk_tblPerfil">
+            <End Role="tblPerfil" EntitySet="tblPerfil" />
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelBezerraMenezes" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAssociado">
+          <Key>
+            <PropertyRef Name="idAssociado" />
+          </Key>
+          <Property Name="idAssociado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="240" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="240" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Celular" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Nascimento" Type="DateTime" Precision="3" />
+          <Property Name="Ativo" Type="Boolean" />
+          <Property Name="Endereco" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Complemento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Bairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UF" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CEP" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="Matricula" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="dtCadastro" Type="DateTime" Precision="3" />
+          <Property Name="dtMigracao" Type="DateTime" Precision="3" />
+          <Property Name="categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblParcela" Relationship="Self.fk_tblParcelaAssociado" FromRole="tblAssociado" ToRole="tblParcela" />
+        </EntityType>
+        <EntityType Name="tblCarrinhoEntrada">
+          <Key>
+            <PropertyRef Name="idCarrinhoEntrada" />
+          </Key>
+          <Property Name="idCarrinhoEntrada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoEstoque" Type="Int32" Nullable="false" />
+          <Property Name="NotaFiscal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fornecedor" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dtMovimento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ISBN" Type="Int64" Nullable="false" />
+          <Property Name="Quantidade" Type="Int32" />
+          <Property Name="Valor" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tblLivros" Relationship="Self.fk_CarrinhoLivros" FromRole="tblCarrinhoEntrada" ToRole="tblLivros" />
+          <NavigationProperty Name="tblTipoEstoque" Relationship="Self.fk_CarrinhoTipoEstoque" FromRole="tblCarrinhoEntrada" ToRole="tblTipoEstoque" />
+        </EntityType>
+        <EntityType Name="tblCategorias">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ativo" Type="Boolean" />
+          <NavigationProperty Name="tblLivros" Relationship="Self.fk_LivrosCategoria" FromRole="tblCategorias" ToRole="tblLivros" />
+        </EntityType>
+        <EntityType Name="tblConta">
+          <Key>
+            <PropertyRef Name="idConta" />
+          </Key>
+          <Property Name="idConta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ativo" Type="Boolean" />
+          <NavigationProperty Name="tblLancamento" Relationship="Self.fk_tblLancamentoConta" FromRole="tblConta" ToRole="tblLancamento" />
+        </EntityType>
+        <EntityType Name="tblEstoque">
+          <Key>
+            <PropertyRef Name="idEstoque" />
+          </Key>
+          <Property Name="idEstoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISBN" Type="Int64" Nullable="false" />
+          <Property Name="NotaFiscal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dtMovimento" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idTipo" Type="Int32" Nullable="false" />
+          <Property Name="Quantidade" Type="Int32" />
+          <Property Name="Valor" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="tblLivros" Relationship="Self.fk_EstoqueLivros" FromRole="tblEstoque" ToRole="tblLivros" />
+        </EntityType>
+        <EntityType Name="tblExtrato">
+          <Key>
+            <PropertyRef Name="idExtrato" />
+          </Key>
+          <Property Name="idExtrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+          <Property Name="Subconta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Saldo" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Conta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DtInicio" Type="DateTime" Precision="3" />
+          <Property Name="DtFim" Type="DateTime" Precision="3" />
+          <Property Name="Filtro" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblFluxo">
+          <Key>
+            <PropertyRef Name="idFluxo" />
+          </Key>
+          <Property Name="idFluxo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subconta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="col01" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col02" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col03" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col04" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col05" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col06" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col07" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col08" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col09" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col10" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col11" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="col12" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tblFluxoColunas">
+          <Key>
+            <PropertyRef Name="idFluxoColuna" />
+          </Key>
+          <Property Name="idFluxoColuna" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="col01" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col02" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col03" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col04" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col05" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col06" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col07" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col08" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col09" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col10" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col11" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="col12" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblFormaPagamento">
+          <Key>
+            <PropertyRef Name="idFormaPagamento" />
+          </Key>
+          <Property Name="idFormaPagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ativo" Type="Boolean" />
+          <NavigationProperty Name="tblParcela" Relationship="Self.fk_tblParcelaFormaPagamento" FromRole="tblFormaPagamento" ToRole="tblParcela" />
+        </EntityType>
+        <EntityType Name="tblLancamento">
+          <Key>
+            <PropertyRef Name="idLancamento" />
+          </Key>
+          <Property Name="idLancamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idConta" Type="Int32" Nullable="false" />
+          <Property Name="idSubconta" Type="Int32" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pagamento" Type="DateTime" Precision="3" />
+          <Property Name="Valor" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Previsto" Type="Boolean" />
+          <NavigationProperty Name="tblConta" Relationship="Self.fk_tblLancamentoConta" FromRole="tblLancamento" ToRole="tblConta" />
+          <NavigationProperty Name="tblSubconta" Relationship="Self.fk_tblLancamentoSubconta" FromRole="tblLancamento" ToRole="tblSubconta" />
+        </EntityType>
+        <EntityType Name="tblLivros">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="Int64" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Autor" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AutorEspiritual" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Editora" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Edicao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Categoria" Type="Int32" Nullable="false" />
+          <Property Name="AnoPublicacao" Type="Int32" />
+          <Property Name="Descricao" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="Capa" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="tblCarrinhoEntrada" Relationship="Self.fk_CarrinhoLivros" FromRole="tblLivros" ToRole="tblCarrinhoEntrada" />
+          <NavigationProperty Name="tblCategorias" Relationship="Self.fk_LivrosCategoria" FromRole="tblLivros" ToRole="tblCategorias" />
+          <NavigationProperty Name="tblEstoque" Relationship="Self.fk_EstoqueLivros" FromRole="tblLivros" ToRole="tblEstoque" />
+        </EntityType>
+        <EntityType Name="tblParcela">
+          <Key>
+            <PropertyRef Name="idParcela" />
+          </Key>
+          <Property Name="idParcela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAssociado" Type="Int32" Nullable="false" />
+          <Property Name="idformaPagamento" Type="Int32" Nullable="false" />
+          <Property Name="idSubconta" Type="Int32" Nullable="false" />
+          <Property Name="Ano" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="Int32" Nullable="false" />
+          <Property Name="Pagamento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Valor" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <NavigationProperty Name="tblAssociado" Relationship="Self.fk_tblParcelaAssociado" FromRole="tblParcela" ToRole="tblAssociado" />
+          <NavigationProperty Name="tblFormaPagamento" Relationship="Self.fk_tblParcelaFormaPagamento" FromRole="tblParcela" ToRole="tblFormaPagamento" />
+          <NavigationProperty Name="tblSubconta" Relationship="Self.fk_tblParcelaSubconta" FromRole="tblParcela" ToRole="tblSubconta" />
+        </EntityType>
+        <EntityType Name="tblPerfil">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ativo" Type="Boolean" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.fk_tblPerfil" FromRole="tblPerfil" ToRole="tblUsuario" />
+        </EntityType>
+        <EntityType Name="tblSubconta">
+          <Key>
+            <PropertyRef Name="idSubconta" />
+          </Key>
+          <Property Name="idSubconta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ativo" Type="Boolean" />
+          <NavigationProperty Name="tblLancamento" Relationship="Self.fk_tblLancamentoSubconta" FromRole="tblSubconta" ToRole="tblLancamento" />
+          <NavigationProperty Name="tblParcela" Relationship="Self.fk_tblParcelaSubconta" FromRole="tblSubconta" ToRole="tblParcela" />
+        </EntityType>
+        <EntityType Name="tblTipoEstoque">
+          <Key>
+            <PropertyRef Name="idTipoEstoque" />
+          </Key>
+          <Property Name="idTipoEstoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ativo" Type="Boolean" />
+          <NavigationProperty Name="tblCarrinhoEntrada" Relationship="Self.fk_CarrinhoTipoEstoque" FromRole="tblTipoEstoque" ToRole="tblCarrinhoEntrada" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPerfil" Type="Int32" Nullable="false" />
+          <Property Name="CodUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="240" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="240" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Nascimento" Type="DateTime" Precision="3" />
+          <Property Name="Ativo" Type="Boolean" />
+          <NavigationProperty Name="tblPerfil" Relationship="Self.fk_tblPerfil" FromRole="tblUsuario" ToRole="tblPerfil" />
+        </EntityType>
+        <Association Name="fk_tblParcelaAssociado">
+          <End Role="tblAssociado" Type="Self.tblAssociado" Multiplicity="1" />
+          <End Role="tblParcela" Type="Self.tblParcela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAssociado">
+              <PropertyRef Name="idAssociado" />
+            </Principal>
+            <Dependent Role="tblParcela">
+              <PropertyRef Name="idAssociado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarrinhoLivros">
+          <End Role="tblLivros" Type="Self.tblLivros" Multiplicity="1" />
+          <End Role="tblCarrinhoEntrada" Type="Self.tblCarrinhoEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLivros">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="tblCarrinhoEntrada">
+              <PropertyRef Name="ISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CarrinhoTipoEstoque">
+          <End Role="tblTipoEstoque" Type="Self.tblTipoEstoque" Multiplicity="1" />
+          <End Role="tblCarrinhoEntrada" Type="Self.tblCarrinhoEntrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoEstoque">
+              <PropertyRef Name="idTipoEstoque" />
+            </Principal>
+            <Dependent Role="tblCarrinhoEntrada">
+              <PropertyRef Name="idTipoEstoque" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LivrosCategoria">
+          <End Role="tblCategorias" Type="Self.tblCategorias" Multiplicity="1" />
+          <End Role="tblLivros" Type="Self.tblLivros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCategorias">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="tblLivros">
+              <PropertyRef Name="Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblLancamentoConta">
+          <End Role="tblConta" Type="Self.tblConta" Multiplicity="1" />
+          <End Role="tblLancamento" Type="Self.tblLancamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblConta">
+              <PropertyRef Name="idConta" />
+            </Principal>
+            <Dependent Role="tblLancamento">
+              <PropertyRef Name="idConta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EstoqueLivros">
+          <End Role="tblLivros" Type="Self.tblLivros" Multiplicity="1" />
+          <End Role="tblEstoque" Type="Self.tblEstoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLivros">
+              <PropertyRef Name="ISBN" />
+            </Principal>
+            <Dependent Role="tblEstoque">
+              <PropertyRef Name="ISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblParcelaFormaPagamento">
+          <End Role="tblFormaPagamento" Type="Self.tblFormaPagamento" Multiplicity="1" />
+          <End Role="tblParcela" Type="Self.tblParcela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFormaPagamento">
+              <PropertyRef Name="idFormaPagamento" />
+            </Principal>
+            <Dependent Role="tblParcela">
+              <PropertyRef Name="idformaPagamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblLancamentoSubconta">
+          <End Role="tblSubconta" Type="Self.tblSubconta" Multiplicity="1" />
+          <End Role="tblLancamento" Type="Self.tblLancamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSubconta">
+              <PropertyRef Name="idSubconta" />
+            </Principal>
+            <Dependent Role="tblLancamento">
+              <PropertyRef Name="idSubconta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblParcelaSubconta">
+          <End Role="tblSubconta" Type="Self.tblSubconta" Multiplicity="1" />
+          <End Role="tblParcela" Type="Self.tblParcela" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSubconta">
+              <PropertyRef Name="idSubconta" />
+            </Principal>
+            <Dependent Role="tblParcela">
+              <PropertyRef Name="idSubconta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblPerfil">
+          <End Role="tblPerfil" Type="Self.tblPerfil" Multiplicity="1" />
+          <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPerfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="tblUsuario">
+              <PropertyRef Name="idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_BezerraMenezesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAssociado" EntityType="Self.tblAssociado" />
+          <EntitySet Name="tblCarrinhoEntrada" EntityType="Self.tblCarrinhoEntrada" />
+          <EntitySet Name="tblCategorias" EntityType="Self.tblCategorias" />
+          <EntitySet Name="tblConta" EntityType="Self.tblConta" />
+          <EntitySet Name="tblEstoque" EntityType="Self.tblEstoque" />
+          <EntitySet Name="tblExtrato" EntityType="Self.tblExtrato" />
+          <EntitySet Name="tblFluxo" EntityType="Self.tblFluxo" />
+          <EntitySet Name="tblFluxoColunas" EntityType="Self.tblFluxoColunas" />
+          <EntitySet Name="tblFormaPagamento" EntityType="Self.tblFormaPagamento" />
+          <EntitySet Name="tblLancamento" EntityType="Self.tblLancamento" />
+          <EntitySet Name="tblLivros" EntityType="Self.tblLivros" />
+          <EntitySet Name="tblParcela" EntityType="Self.tblParcela" />
+          <EntitySet Name="tblPerfil" EntityType="Self.tblPerfil" />
+          <EntitySet Name="tblSubconta" EntityType="Self.tblSubconta" />
+          <EntitySet Name="tblTipoEstoque" EntityType="Self.tblTipoEstoque" />
+          <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" />
+          <AssociationSet Name="fk_tblParcelaAssociado" Association="Self.fk_tblParcelaAssociado">
+            <End Role="tblAssociado" EntitySet="tblAssociado" />
+            <End Role="tblParcela" EntitySet="tblParcela" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CarrinhoLivros" Association="Self.fk_CarrinhoLivros">
+            <End Role="tblLivros" EntitySet="tblLivros" />
+            <End Role="tblCarrinhoEntrada" EntitySet="tblCarrinhoEntrada" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CarrinhoTipoEstoque" Association="Self.fk_CarrinhoTipoEstoque">
+            <End Role="tblTipoEstoque" EntitySet="tblTipoEstoque" />
+            <End Role="tblCarrinhoEntrada" EntitySet="tblCarrinhoEntrada" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LivrosCategoria" Association="Self.fk_LivrosCategoria">
+            <End Role="tblCategorias" EntitySet="tblCategorias" />
+            <End Role="tblLivros" EntitySet="tblLivros" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblLancamentoConta" Association="Self.fk_tblLancamentoConta">
+            <End Role="tblConta" EntitySet="tblConta" />
+            <End Role="tblLancamento" EntitySet="tblLancamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EstoqueLivros" Association="Self.fk_EstoqueLivros">
+            <End Role="tblLivros" EntitySet="tblLivros" />
+            <End Role="tblEstoque" EntitySet="tblEstoque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblParcelaFormaPagamento" Association="Self.fk_tblParcelaFormaPagamento">
+            <End Role="tblFormaPagamento" EntitySet="tblFormaPagamento" />
+            <End Role="tblParcela" EntitySet="tblParcela" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblLancamentoSubconta" Association="Self.fk_tblLancamentoSubconta">
+            <End Role="tblSubconta" EntitySet="tblSubconta" />
+            <End Role="tblLancamento" EntitySet="tblLancamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblParcelaSubconta" Association="Self.fk_tblParcelaSubconta">
+            <End Role="tblSubconta" EntitySet="tblSubconta" />
+            <End Role="tblParcela" EntitySet="tblParcela" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblPerfil" Association="Self.fk_tblPerfil">
+            <End Role="tblPerfil" EntitySet="tblPerfil" />
+            <End Role="tblUsuario" EntitySet="tblUsuario" />
+          </AssociationSet>
+          <FunctionImport Name="sp_fin_rep_extrato">
+            <Parameter Name="idConta" Mode="In" Type="Int32" />
+            <Parameter Name="dtInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="dtFim" Mode="In" Type="DateTime" />
+            <Parameter Name="txtFiltro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_fin_rep_fluxo">
+            <Parameter Name="idConta" Mode="In" Type="Int32" />
+            <Parameter Name="dtInicio" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelBezerraMenezesStoreContainer" CdmEntityContainer="db_BezerraMenezesEntities">
+          <EntitySetMapping Name="tblAssociado">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblAssociado">
+              <MappingFragment StoreEntitySet="tblAssociado">
+                <ScalarProperty Name="idAssociado" ColumnName="idAssociado" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Nascimento" ColumnName="Nascimento" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="dtCadastro" ColumnName="dtCadastro" />
+                <ScalarProperty Name="dtMigracao" ColumnName="dtMigracao" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCarrinhoEntrada">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblCarrinhoEntrada">
+              <MappingFragment StoreEntitySet="tblCarrinhoEntrada">
+                <ScalarProperty Name="idCarrinhoEntrada" ColumnName="idCarrinhoEntrada" />
+                <ScalarProperty Name="idTipoEstoque" ColumnName="idTipoEstoque" />
+                <ScalarProperty Name="NotaFiscal" ColumnName="NotaFiscal" />
+                <ScalarProperty Name="Fornecedor" ColumnName="Fornecedor" />
+                <ScalarProperty Name="dtMovimento" ColumnName="dtMovimento" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategorias">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblCategorias">
+              <MappingFragment StoreEntitySet="tblCategorias">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblConta">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblConta">
+              <MappingFragment StoreEntitySet="tblConta">
+                <ScalarProperty Name="idConta" ColumnName="idConta" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEstoque">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblEstoque">
+              <MappingFragment StoreEntitySet="tblEstoque">
+                <ScalarProperty Name="idEstoque" ColumnName="idEstoque" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="NotaFiscal" ColumnName="NotaFiscal" />
+                <ScalarProperty Name="dtMovimento" ColumnName="dtMovimento" />
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExtrato">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblExtrato">
+              <MappingFragment StoreEntitySet="tblExtrato">
+                <ScalarProperty Name="idExtrato" ColumnName="idExtrato" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Subconta" ColumnName="Subconta" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Conta" ColumnName="Conta" />
+                <ScalarProperty Name="DtInicio" ColumnName="DtInicio" />
+                <ScalarProperty Name="DtFim" ColumnName="DtFim" />
+                <ScalarProperty Name="Filtro" ColumnName="Filtro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFluxo">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblFluxo">
+              <MappingFragment StoreEntitySet="tblFluxo">
+                <ScalarProperty Name="idFluxo" ColumnName="idFluxo" />
+                <ScalarProperty Name="Subconta" ColumnName="Subconta" />
+                <ScalarProperty Name="col01" ColumnName="col01" />
+                <ScalarProperty Name="col02" ColumnName="col02" />
+                <ScalarProperty Name="col03" ColumnName="col03" />
+                <ScalarProperty Name="col04" ColumnName="col04" />
+                <ScalarProperty Name="col05" ColumnName="col05" />
+                <ScalarProperty Name="col06" ColumnName="col06" />
+                <ScalarProperty Name="col07" ColumnName="col07" />
+                <ScalarProperty Name="col08" ColumnName="col08" />
+                <ScalarProperty Name="col09" ColumnName="col09" />
+                <ScalarProperty Name="col10" ColumnName="col10" />
+                <ScalarProperty Name="col11" ColumnName="col11" />
+                <ScalarProperty Name="col12" ColumnName="col12" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFluxoColunas">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblFluxoColunas">
+              <MappingFragment StoreEntitySet="tblFluxoColunas">
+                <ScalarProperty Name="idFluxoColuna" ColumnName="idFluxoColuna" />
+                <ScalarProperty Name="col01" ColumnName="col01" />
+                <ScalarProperty Name="col02" ColumnName="col02" />
+                <ScalarProperty Name="col03" ColumnName="col03" />
+                <ScalarProperty Name="col04" ColumnName="col04" />
+                <ScalarProperty Name="col05" ColumnName="col05" />
+                <ScalarProperty Name="col06" ColumnName="col06" />
+                <ScalarProperty Name="col07" ColumnName="col07" />
+                <ScalarProperty Name="col08" ColumnName="col08" />
+                <ScalarProperty Name="col09" ColumnName="col09" />
+                <ScalarProperty Name="col10" ColumnName="col10" />
+                <ScalarProperty Name="col11" ColumnName="col11" />
+                <ScalarProperty Name="col12" ColumnName="col12" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFormaPagamento">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblFormaPagamento">
+              <MappingFragment StoreEntitySet="tblFormaPagamento">
+                <ScalarProperty Name="idFormaPagamento" ColumnName="idFormaPagamento" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLancamento">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblLancamento">
+              <MappingFragment StoreEntitySet="tblLancamento">
+                <ScalarProperty Name="idLancamento" ColumnName="idLancamento" />
+                <ScalarProperty Name="idConta" ColumnName="idConta" />
+                <ScalarProperty Name="idSubconta" ColumnName="idSubconta" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Pagamento" ColumnName="Pagamento" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Previsto" ColumnName="Previsto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLivros">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblLivros">
+              <MappingFragment StoreEntitySet="tblLivros">
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="AutorEspiritual" ColumnName="AutorEspiritual" />
+                <ScalarProperty Name="Editora" ColumnName="Editora" />
+                <ScalarProperty Name="Edicao" ColumnName="Edicao" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="AnoPublicacao" ColumnName="AnoPublicacao" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Capa" ColumnName="Capa" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParcela">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblParcela">
+              <MappingFragment StoreEntitySet="tblParcela">
+                <ScalarProperty Name="idParcela" ColumnName="idParcela" />
+                <ScalarProperty Name="idAssociado" ColumnName="idAssociado" />
+                <ScalarProperty Name="idformaPagamento" ColumnName="idformaPagamento" />
+                <ScalarProperty Name="idSubconta" ColumnName="idSubconta" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Pagamento" ColumnName="Pagamento" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPerfil">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblPerfil">
+              <MappingFragment StoreEntitySet="tblPerfil">
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubconta">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblSubconta">
+              <MappingFragment StoreEntitySet="tblSubconta">
+                <ScalarProperty Name="idSubconta" ColumnName="idSubconta" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTipoEstoque">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblTipoEstoque">
+              <MappingFragment StoreEntitySet="tblTipoEstoque">
+                <ScalarProperty Name="idTipoEstoque" ColumnName="idTipoEstoque" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsuario">
+            <EntityTypeMapping TypeName="ModelBezerraMenezes.tblUsuario">
+              <MappingFragment StoreEntitySet="tblUsuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Nascimento" ColumnName="Nascimento" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_fin_rep_extrato" FunctionName="ModelBezerraMenezes.Store.sp_fin_rep_extrato" />
+          <FunctionImportMapping FunctionImportName="sp_fin_rep_fluxo" FunctionName="ModelBezerraMenezes.Store.sp_fin_rep_fluxo" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

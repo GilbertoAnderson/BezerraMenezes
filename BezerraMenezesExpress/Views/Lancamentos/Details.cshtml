@@ -1,0 +1,66 @@
+﻿@model BezerraMenezesExpress.Models.tblLancamento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhe</h2>
+
+<div>
+    <h4>Lancamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            Data
+        </dt>
+
+        <dd>            
+            @Html.ValueFor(model => model.Pagamento, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Previsto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Previsto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblConta.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblConta.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblSubconta.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblSubconta.Descricao)
+        </dd>
+
+    </dl>
+</div>
+<p>    
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idLancamento }) |
+    @Html.ActionLink("Retornar a lista", "LancamentosConta", new { id = Model.idConta})
+</p>

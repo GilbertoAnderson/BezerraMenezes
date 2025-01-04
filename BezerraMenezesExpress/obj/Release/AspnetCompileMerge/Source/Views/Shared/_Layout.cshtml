@@ -1,0 +1,145 @@
+﻿@using BezerraMenezesExpress.Controllers.Shared;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Bezerra de Menezes Financeiro</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <script language="JavaScript1.2">
+        top.window.moveTo(0,0);
+        if (document.all)
+        {
+            alert("oi1"); top.window.resizeTo(screen.availWidth, screen.availHeight);
+        }
+        else if
+           (document.layers || document.getElementById)
+        {            
+           if
+            (top.window.outerHeight < screen.availHeight || top.window.outerWidth < screen.availWidth)
+             { top.window.outerHeight = top.screen.availHeight;
+               top.window.outerWidth = top.screen.availWidth; }
+           }
+    </script>
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (SessionProfile.Logado)
+                {
+                        @Html.ActionLink("Bezerra de Menezes |", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("Bezerra de Menezes |", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+
+                    @if (SessionProfile.Admin || SessionProfile.Financeiro || SessionProfile.Secretaria)
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Associado
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @if (SessionProfile.Admin || SessionProfile.Secretaria)
+                                {
+                                    <li class="dropdown-header">@Html.ActionLink("Consulta", "Index", "Associados")</li>
+                                    <li class="dropdown-header">@Html.ActionLink("Ultima Parcela", "UltimaParcela", "Relatorios")</li>
+                                    <li class="dropdown-header">@Html.ActionLink("Associado Categoria", "AssociadoCategoria", "Relatorios")</li>
+                                }
+                                <li class="dropdown-header">@Html.ActionLink("Histórico", "Historico", "Associados")</li>
+                            </ul>
+                        </li>
+                    }
+
+                    @if (SessionProfile.Admin || SessionProfile.Financeiro)
+                    {
+                        <li>@Html.ActionLink("Contribuição", "Create", "Parcelas")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Financeiro
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">@Html.ActionLink("Forma de Pagamento", "Index", "FormasPagamento")</li>
+                                <li class="dropdown-header">@Html.ActionLink("Contas", "Index", "Contas")</li>
+                                <li class="dropdown-header">@Html.ActionLink("SubContas", "Index", "SubContas")</li>
+                                <li class="dropdown-header">@Html.ActionLink("Lançamentos", "ListaContas", "Contas")</li>
+                                <li class="dropdown-header">@Html.ActionLink("Extrato", "Extrato", "Relatorios")</li>
+                                <li class="dropdown-header">@Html.ActionLink("Fluxo", "Fluxo", "Relatorios")</li>
+                                <li class="dropdown-header">@Html.ActionLink("Gerencial", "Gerencial", "Relatorios")</li>
+                            </ul>
+                        </li>
+                    }
+
+                    <!----   bloco livraria inicio -->
+                    @if (SessionProfile.Livraria)
+                    {
+                        <li>@Html.ActionLink("Livros", "Index", "Livros")</li>
+                        <li>@Html.ActionLink("Entrada", "Create", "CarrinhosEntrada")</li>
+                    }
+
+                    @if (SessionProfile.Admin)
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Livraria
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">@Html.ActionLink("Livros", "Index", "Livros")</li>
+                                <li class="dropdown-header">@Html.ActionLink("Entrada", "EntradaIndex", "CarrinhosEntrada")</li>
+
+
+                                <li class="dropdown-header">@Html.ActionLink("Venda", "Saida", "CarrinhosEntrada")</li>
+                            </ul>
+                        </li>
+
+                    }
+
+                    <!----   bloco livraria termino -->
+
+                    @if (SessionProfile.Admin)
+                    {
+                        <li>@Html.ActionLink("Usuários", "Index", "Usuarios")</li>
+                    }
+
+
+
+                    <li>@Html.ActionLink("Sobre", "About", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Centro Espirita Bezerra de Menezes </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
