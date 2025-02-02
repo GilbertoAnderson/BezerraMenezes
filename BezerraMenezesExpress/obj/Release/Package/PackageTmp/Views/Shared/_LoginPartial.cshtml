@@ -2,19 +2,16 @@
 @using BezerraMenezesExpress.Controllers.Shared;
 
 @if (SessionProfile.Logado)
-{
-<ul class="nav navbar-nav navbar-right">
-    <li>
-        @Html.ActionLink((string)Session["Nome"], "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-    </li>
-    <li>
-        @Html.ActionLink("Sair", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </li>
-</ul>
+   {
+    <ul class="nav navbar-nav navbar-right">
+
+        <li>@Html.ActionLink((string)Session["Nome"], "Index", "Manage", new { area = "" }, new { @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Sair", "LogOff", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+    </ul>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Entrar", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    <li> @Html.ActionLink("Entrar", "Login", "Account", new { area = "" }, new { @class = "nav-link" }) </li>
+</ul>
 }

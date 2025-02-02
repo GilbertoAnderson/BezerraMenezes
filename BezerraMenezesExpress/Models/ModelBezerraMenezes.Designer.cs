@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Giba\Trabalho\sites\BezerraMenezes\BezerraMenezes_SmartAsp2023\BezerraMenezesExpress\Models\ModelBezerraMenezes.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\giba_\Documents\Profissional\Clientes\BezerraMenezes\bezerra2\BezerraMenezes\BezerraMenezesExpress\Models\ModelBezerraMenezes.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -5,130 +5,155 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Bezerra de Menezes Financeiro</title>
+    <!-- Última versão CSS compilada e minificada -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 
     <script language="JavaScript1.2">
-        top.window.moveTo(0,0);
-        if (document.all)
-        {
-            alert("oi1"); top.window.resizeTo(screen.availWidth, screen.availHeight);
+        top.window.moveTo(0, 0);
+        if (document.all) {
+            alert("oi"); top.window.resizeTo(screen.availWidth, screen.availHeight);
         }
         else if
-           (document.layers || document.getElementById)
-        {            
-           if
-            (top.window.outerHeight < screen.availHeight || top.window.outerWidth < screen.availWidth)
-             { top.window.outerHeight = top.screen.availHeight;
-               top.window.outerWidth = top.screen.availWidth; }
-           }
+            (document.layers || document.getElementById) {
+            if
+                (top.window.outerHeight < screen.availHeight || top.window.outerWidth < screen.availWidth) {
+                top.window.outerHeight = top.screen.availHeight;
+                top.window.outerWidth = top.screen.availWidth;
+            }
+        }
     </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @if (SessionProfile.Logado)
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        @Html.ActionLink("Bezerra de Menezes |", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+                @if (SessionProfile.Admin || SessionProfile.Financeiro || SessionProfile.Secretaria)
                 {
-                        @Html.ActionLink("Bezerra de Menezes |", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Associado
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            @if (SessionProfile.Admin || SessionProfile.Secretaria)
+                            {
+                                @Html.ActionLink("Consulta", "Index", "Associados", new { area = "" }, new { @class = "dropdown-item" })
+
+                                @Html.ActionLink("Ultima Parcela", "UltimaParcela", "Relatorios", new { area = "" }, new { @class = "dropdown-item" })
+
+                                @Html.ActionLink("Associado Categoria", "AssociadoCategoria", "Relatorios", new { area = "" }, new { @class = "dropdown-item" })
+                            }
+
+                            @Html.ActionLink("Histórico", "Historico", "Associados", new { area = "" }, new { @class = "dropdown-item" })
+
+
+                         </div>
+                    </li>
+
                 }
-                else
+
+
+
+
+
+                @if (SessionProfile.Admin || SessionProfile.Financeiro)
                 {
-                    @Html.ActionLink("Bezerra de Menezes |", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                    <li>@Html.ActionLink("Contribuição", "Create", "Parcelas", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Financeiro
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            @Html.ActionLink("Forma de Pagamento", "Index", "FormasPagamento", new { area = "" }, new { @class = "dropdown-item" })
+
+                            @Html.ActionLink("Contas", "Index", "Contas", new { area = "" }, new { @class = "dropdown-item" })
+
+                            @Html.ActionLink("SubContas", "Index", "SubContas", new { area = "" }, new { @class = "dropdown-item" })
+
+                            @Html.ActionLink("Lançamentos", "ListaContas", "Contas", new { area = "" }, new { @class = "dropdown-item" })
+
+                            @Html.ActionLink("Extrato", "Extrato", "Relatorios", new { area = "" }, new { @class = "dropdown-item" })
+
+                            @Html.ActionLink("Fluxo", "Fluxo", "Relatorios", new { area = "" }, new { @class = "dropdown-item" })
+
+                            @*@Html.ActionLink("Gerencial", "Gerencial", "Relatorios", new { area = "" }, new { @class = "dropdown-item" })*@
+
+                        </div>
+                    </li>
+
                 }
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-
-
-                    @if (SessionProfile.Admin || SessionProfile.Financeiro || SessionProfile.Secretaria)
-                    {
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                Associado
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                @if (SessionProfile.Admin || SessionProfile.Secretaria)
-                                {
-                                    <li class="dropdown-header">@Html.ActionLink("Consulta", "Index", "Associados")</li>
-                                    <li class="dropdown-header">@Html.ActionLink("Ultima Parcela", "UltimaParcela", "Relatorios")</li>
-                                    <li class="dropdown-header">@Html.ActionLink("Associado Categoria", "AssociadoCategoria", "Relatorios")</li>
-                                }
-                                <li class="dropdown-header">@Html.ActionLink("Histórico", "Historico", "Associados")</li>
-                            </ul>
-                        </li>
-                    }
-
-                    @if (SessionProfile.Admin || SessionProfile.Financeiro)
-                    {
-                        <li>@Html.ActionLink("Contribuição", "Create", "Parcelas")</li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                Financeiro
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-header">@Html.ActionLink("Forma de Pagamento", "Index", "FormasPagamento")</li>
-                                <li class="dropdown-header">@Html.ActionLink("Contas", "Index", "Contas")</li>
-                                <li class="dropdown-header">@Html.ActionLink("SubContas", "Index", "SubContas")</li>
-                                <li class="dropdown-header">@Html.ActionLink("Lançamentos", "ListaContas", "Contas")</li>
-                                <li class="dropdown-header">@Html.ActionLink("Extrato", "Extrato", "Relatorios")</li>
-                                <li class="dropdown-header">@Html.ActionLink("Fluxo", "Fluxo", "Relatorios")</li>
-                                <li class="dropdown-header">@Html.ActionLink("Gerencial", "Gerencial", "Relatorios")</li>
-                            </ul>
-                        </li>
-                    }
-
-                    <!----   bloco livraria inicio -->
-                    @if (SessionProfile.Livraria)
-                    {
-                        <li>@Html.ActionLink("Livros", "Index", "Livros")</li>
-                        <li>@Html.ActionLink("Entrada", "Create", "CarrinhosEntrada")</li>
-                    }
-
-                    @if (SessionProfile.Admin)
-                    {
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                Livraria
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-header">@Html.ActionLink("Livros", "Index", "Livros")</li>
-                                <li class="dropdown-header">@Html.ActionLink("Entrada", "EntradaIndex", "CarrinhosEntrada")</li>
-
-
-                                <li class="dropdown-header">@Html.ActionLink("Venda", "Saida", "CarrinhosEntrada")</li>
-                            </ul>
-                        </li>
-
-                    }
-
-                    <!----   bloco livraria termino -->
-
-                    @if (SessionProfile.Admin)
-                    {
-                        <li>@Html.ActionLink("Usuários", "Index", "Usuarios")</li>
-                    }
 
 
 
-                    <li>@Html.ActionLink("Sobre", "About", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
 
+
+                @*--   bloco livraria inicio*@
+                @if (SessionProfile.Livraria)
+                {
+                    <li>@Html.ActionLink("Livros", "Index", "Livros", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Entrada", "Create", "CarrinhosEntrada", new { area = "" }, new { @class = "nav-link" })</li>
+                }
+
+
+                @if (SessionProfile.Admin)
+                {
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Livraria
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            @Html.ActionLink("Livros", "Index", "Livros", new { area = "" }, new { @class = "dropdown-item" })
+
+                            @Html.ActionLink("Entrada", "EntradaIndex", "CarrinhosEntrada", new { area = "" }, new { @class = "dropdown-item" })
+
+                            @Html.ActionLink("Venda", "Saida", "CarrinhosEntrada", new { area = "" }, new { @class = "dropdown-item" })
+
+                        </div>
+                    </li>
+
+                }
+
+
+                @if (SessionProfile.Admin)
+                {
+                    <li>@Html.ActionLink("Usuários", "Index", "Usuarios", new { area = "" }, new { @class = "nav-link" })</li>
+                }
+
+
+
+                <li>@Html.ActionLink("Sobre", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+            </ul>
+
+            @Html.Partial("_LoginPartial")
         </div>
-    </div>
+    </nav>
+
+
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -138,8 +163,28 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
 
 </body>
 </html>
+
+
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('.dropdown-submenu a.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+
+
+    </script>
+}

@@ -36,8 +36,7 @@ namespace BezerraMenezesExpress.Controllers
                 Associado = Associado.Where(h => h.Nome.Contains(strCriterio.ToString())
                                             || h.categoria.Contains(strCriterio.ToString())
                                             || h.Matricula.Contains(strCriterio.ToString())
-                                            || h.Celular.Contains(strCriterio.ToString())
-                                            || h.Ativo == true);
+                                            || h.Celular.Contains(strCriterio.ToString()));
             }
 
 
